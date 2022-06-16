@@ -1,7 +1,7 @@
 # my global config
 global:
-  scrape_interval: 15s # Set the scrape interval to every 15 seconds. Default is every 1 minute.
-  evaluation_interval: 15s # Evaluate rules every 15 seconds. The default is every 1 minute.
+  scrape_interval: 5s # Set the scrape interval to every 5 seconds. Default is every 1 minute.
+  evaluation_interval: 5s # Evaluate rules every 5 seconds. The default is every 1 minute.
   # scrape_timeout is set to the global default (10s).
 
 # Alertmanager configuration
@@ -9,10 +9,11 @@ alerting:
   alertmanagers:
     - static_configs:
         - targets:
-          # - alertmanager:9093
+           - alertmanager:9093
 
 # Load rules once and periodically evaluate them according to the global 'evaluation_interval'.
 rule_files:
+  - "custom_alerts.yml"
   # - "first_rules.yml"
   # - "second_rules.yml"
 
@@ -28,3 +29,85 @@ scrape_configs:
     static_configs:
       - targets: ["localhost:9090"]
 
+        # Linux Servers
+  - job_name: linux-server1
+    static_configs:
+      - targets: ['localhost:9100']
+        labels:
+          alias: server1
+
+            #- job_name: apache-linux-server2
+            #static_configs:
+            #- targets: ['1.1.10.2:9100']
+            #labels:
+            #alias: server2
+
+  - job_name: mysql-ty
+    static_configs:
+      - targets: ['5.188.150.91:9104']
+        labels:
+          alias: db1
+
+  - job_name: check_http
+    metrics_path: /probe
+    params:
+      module: [http_2xx]
+    static_configs:
+      - targets:
+        - http://5.188.150.91/user/login
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: __param_target
+      - source_labels: [__param_target]
+        target_label: instance
+      - target_label: __address__
+        replacement: localhost:9115
+
+  - job_name: check_ssh
+    metrics_path: /probe
+    params:
+      module: [ssh_banner]
+    static_configs:
+      - targets:
+        - 5.188.150.91:22
+        - 5.188.150.214:22
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: __param_target
+      - source_labels: [__param_target]
+        target_label: instance
+      - target_label: __address__
+        replacement: localhost:9115
+
+  - job_name: blackboxq
+    metrics_path: /probe
+    params:
+      module: [icmp]
+    static_configs:
+      - targets:
+        - localhost
+        - 5.188.150.91
+        - 5.188.150.214
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: __param_target
+      - source_labels: [__param_target]
+        target_label: instance
+      - target_label: __address__
+        replacement: 127.0.0.1:9115
+
+  - job_name: blackboxstat
+    metrics_path: /probe
+    scrape_timeout: 5s
+    params:
+      module: [https_2xx]
+    static_configs:
+      - targets:
+        - http://localhost:4000
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: __param_target
+      - source_labels: [__param_target]
+        target_label: instance
+      - target_label: __address__
+        replacement: 127.0.0.1:9101
