@@ -68,6 +68,4 @@ grafana-cli plugins install grafana-image-renderer
 Aleret о недоступности одного из компонентов системы:
 ![](https://github.com/avcore/otus/blob/main/screenshots-all/1-4-tg-alert-2022-06-17_03-16.png)
 
-- [ ] Скриншоты, которые не вошли в отчёт: Readme [доступны по этой ссылке](#https://github.com/avcore/otus/blob/main/screenshots-all/) :fa-star: 
-
-
+- [ ] Скриншоты, которые не вошли в отчёт: Readme [доступны по этой ссылке: https://github.com/avcore/otus/blob/main/screenshots-all/ ]
