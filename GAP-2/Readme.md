@@ -39,33 +39,41 @@ grafana-cli plugins install grafana-image-renderer
 ```
 Настройка и конфигурация Grafana сервера, через web-интерфейс:
 -------------
+
 Добавление источников метрик Prometheus & MySQL:
 ----
 ![](https://github.com/avcore/otus/blob/main/screenshots-all/4-1-1-12022-06-16_23-26.png)
-Добавление Директорий App и Infra
+
+Добавление Директорий App и Infra:
 ----
 ![](https://github.com/avcore/otus/blob/main/screenshots-all/4-1-1-2-2022-06-16_23-39.png)
-Создание главного DrillDown дашборда по GAP-2
+
+Создание главного DrillDown дашборда по GAP-2:
 ----
 ![](https://github.com/avcore/otus/blob/main/screenshots-all/grafana-4_5-2022-06-16_23-06.png)
 
 Переход из главного верхеуровнего дашборда к дашбордам производительности Инстансов:
+----
 ![](https://github.com/avcore/otus/blob/main/screenshots-all/4-5-1-2022-06-16_23-22.png)
 ![](https://github.com/avcore/otus/blob/main/screenshots-all/4-5-2-2022-06-16_23-23.png)
 
 Переход из главного верхеуровнего дашборда к дашбордам производительности Приложений:
+----
 ![](https://github.com/avcore/otus/blob/main/screenshots-all/4-5-3-2022-06-16_23-23.png)
 ![](https://github.com/avcore/otus/blob/main/screenshots-all/4-5-3-2022-06-16_23-23.png)
 
 Создание УЗ для системы оповещений в телеграм: 
+----
 ![](https://github.com/avcore/otus/blob/main/screenshots-all/XXX)
 
 Создание трешолд-правил срабатывания оповещения: 
+----
 ![](https://github.com/avcore/otus/blob/main/screenshots-all/1-1-tg-alert-2022-06-17_03-11.png)
 ![](https://github.com/avcore/otus/blob/main/screenshots-all/1-2-tg-alert-2022-06-17_03-13.png)
 ![](https://github.com/avcore/otus/blob/main/screenshots-all/1-3-tg-alert-2022-06-17_03-14.png)
 
 Aleret о недоступности одного из компонентов системы:
+----
 ![](https://github.com/avcore/otus/blob/main/screenshots-all/1-4-tg-alert-2022-06-17_03-16.png)
 
 - [ ] Скриншоты, которые не вошли в отчёт: Readme [доступны по этой ссылке: https://github.com/avcore/otus/blob/main/screenshots-all/ ]
