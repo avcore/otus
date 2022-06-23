@@ -200,3 +200,8 @@ output {
 
 К сожалению: Не удалось выполнить реализацию: визуализации логов от sshd в kibana
 ----
+Не хватило вычислительных ресурсов: 
+	- CPU  (ЦП перегружен...)
+	- Disk (логи быстро укладывают всё свободное место на диске)
+![](https://github.com/avcore/otus/blob/main/screenshots-all/elk-2-1-CPU-100-2022-06-23_01-44.png)
+![](https://github.com/avcore/otus/blob/main/screenshots-all/elk-logs-0-2022-06-24_01-45..png)

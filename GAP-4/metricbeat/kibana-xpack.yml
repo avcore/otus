@@ -1,0 +1,9 @@
+- module: kibana
+  metricsets:
+    - stats
+  period: 10s
+  hosts: ["localhost:5601"]
+  #basepath: ""
+  #username: "remote_monitoring_user"
+  #password: "remote_monitoring_user_password"
+  xpack.enabled: true
