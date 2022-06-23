@@ -107,7 +107,7 @@ certbot --nginx
 groupadd --system prometheus
 useradd -s /sbin/nologin --system -g prometheus prometheus
 mkdir /var/lib/prometheus
-for i in rules rules.d files_sd; do sudo mkdir -p /etc/prometheus/${i}; done
+for i in rules rules.d files_sd; do  mkdir -p /etc/prometheus/${i}; done
 apt update && apt -y install wget curl vim
 mkdir -p /tmp/prometheus && cd /tmp/prometheus
 curl -s https://api.github.com/repos/prometheus/prometheus/releases/latest | grep browser_download_url | grep linux-amd64 | cut -d '"' -f 4 | wget -qi -
@@ -234,7 +234,7 @@ scrape_configs:
       - target_label: __address__
         replacement: 127.0.0.1:9101
 EOF
-sudo tee /etc/systemd/system/prometheus.service<<EOF
+tee /etc/systemd/system/prometheus.service<<EOF
 [Unit]
 Description=Prometheus
 Documentation=https://prometheus.io/docs/introduction/overview/
@@ -254,9 +254,9 @@ Restart=always
 [Install]
 WantedBy=multi-user.target
 EOF
-for i in rules rules.d files_sd; do sudo chown -R prometheus:prometheus /etc/prometheus/${i}; done
-for i in rules rules.d files_sd; do sudo chmod -R 775 /etc/prometheus/${i}; done
-sudo chown -R prometheus:prometheus /var/lib/prometheus/
+for i in rules rules.d files_sd; do chown -R prometheus:prometheus /etc/prometheus/${i}; done
+for i in rules rules.d files_sd; do chmod -R 775 /etc/prometheus/${i}; done
+chown -R prometheus:prometheus /var/lib/prometheus/
 systemctl daemon-reload && sleep 3 && systemctl start prometheus && sleep 3 && systemctl enable prometheus
 ufw allow 9090/tcp
 ```
